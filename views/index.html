@@ -4,11 +4,90 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"> </script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="./script.js"></script>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="style.css">
 	</head>
+
 	<body ng-app = "Phase2" ng-controller = "Phase2Controller">
-		<p> {{ test }} </p>
-		<h1 ng-repeat = "x in months"> {{ x }} </h1>
-		<button ng-click="getdata()"> click here </button>
-</body>
+		<ul class="tab">
+		  <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Friends')">Click Here To Start</a></li>
+		  <!-- <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Photos')">Photos</a></li> -->
+		  <!-- <li><a href="javascript:void(0)" class="tablinks" onclick="openCity(event, 'Hometowns')">Hometowns</a></li> -->
+		</ul>
+
+		<div id="Friends" class="tabcontent">
+			<p> {{ test }} </p>
+			<h1 ng-repeat = "x in months"> {{ x }} </h1>
+			<div class = "FONT25">
+			  <!-- <h1> Ng repeat stuff </h1> -->
+			</div>
+			<button class = "marginleft FONT15" style = "color: blue" onclick="doLogin()"> Login </button>
+			<button class = "marginleft FONT15" style = "color: blue" ng-click="getUserInfo()"> Facebook Data </button>
+
+		  <h3></h3>
+		  <!-- <p>Friends is the capital city of England.</p> -->
+		</div>
+<!-- 
+		<div id="Photos" class="tabcontent">
+		  <h3></h3>
+		  <p>Photos is the capital of France.</p> 
+		</div> -->
+
+		<!-- <div id="Hometowns" class="tabcontent">
+		  <h3></h3>
+		  <p>Hometowns is the capital of Japan.</p>
+		</div> -->
 	</body>
+	<script type="text/javascript">
+
+		function doLogin() {
+		    FB.login(function(response) {
+		        if (response.authResponse) {
+		            console.log('Welcome! Fetching your information.... ');
+		            var access_token =   FB.getAuthResponse()['accessToken'];
+		                 console.log('Access Token = '+ access_token);
+
+		            FB.api('/me', function(response) {
+		                console.log('Good to see you, ' + response.name + '.' + ' Facebook ID: ' + response.id);
+		                // var hometown= response.hometown.name;
+		                // console.log(hometown);
+		               // console.log(response.accessToken);
+		            });
+		        } else {
+		            console.log('User cancelled login or did not fully authorize.');
+		        }
+		    }, { scope: 'email,user_birthday,user_location,user_hometown' });
+		}
+
+		window.fbAsyncInit = function() {
+
+			FB.init({
+			  appId  : '169484620208622',
+			  status : true, // check login status
+			  cookie : true, // enable cookies to allow the server to access the session
+			  xfbml  : true  // parse XFBML
+			});
+
+			FB.getLoginStatus(function(response) {
+				console.log(response);
+			  if (response.status === 'connected') {
+			    var accessToken = response.authResponse.accessToken;
+			  } 
+			});
+		};
+
+		(function(d, s, id){
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) {return;}
+		  js = d.createElement(s); js.id = id;
+		  js.src = "https://connect.facebook.net/en_US/all.js";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+
+	</script>
 </html>

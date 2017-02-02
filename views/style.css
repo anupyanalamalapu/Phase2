@@ -1,0 +1,143 @@
+body 
+{
+	        background-image:
+	        	 url("blue.png");
+	        background-repeat: no-repeat;
+	        background-size:cover;
+}  
+.links
+{
+	font-size: 18px; 
+	background-color: white;
+}
+
+.left
+{
+	text-align: left;
+
+}
+
+.right
+{
+	text-align: right;
+}
+
+.marginleft
+{
+	margin-left:10px;
+}
+
+.marginright
+{
+	margin-right:30px;
+}
+
+.marginbottom
+{
+	margin-bottom: 500px;
+}
+
+.margintop
+{
+	margin-top: 50px;
+}
+
+.center
+{
+	text-align: center;
+}
+
+.words
+{
+	color:white;
+}
+
+.positioning
+{
+    float: right;
+}
+
+@-webkit-keyframes typing { from { width: 0; } }
+@-webkit-keyframes blink-caret { 50% { border-color: transparent; } }
+
+h2 { 
+	font: bold 2em monospace;
+  	color: white;
+	border-right: .1em solid black;
+	width: calc(0.55em * 14); 
+	width: 14ch;
+	white-space: nowrap;
+	overflow: hidden;
+/*	-webkit-animation-delay: 2s;*/
+	-webkit-animation: typing 4s steps(14, end),
+	           blink-caret .5s step-end infinite alternate;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.picture {
+    border: 5px solid white;
+}
+
+.nav > li > a:hover {
+	text-decoration: underline;
+
+}
+
+.FONT15 {
+	font-family: Verdana;
+	font-size: 15px; 
+	color: white;
+}
+
+.FONT20 {
+	font-family: Verdana;
+	font-size: 20px; 
+	color: white;
+}
+
+.FONT25 {
+	font-family: Verdana;
+	font-size: 25px; 
+	color: white;
+}
+
+/* Style the list */
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {background-color: #ddd;}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {background-color: #ccc;}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
